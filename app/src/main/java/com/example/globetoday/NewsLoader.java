@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.content.AsyncTaskLoader;
+import android.util.Log;
 
 import java.util.List;
 /**
@@ -24,18 +25,17 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
      * Constructs a new {@link NewsLoader}.
      *
      * @param context of the activity
-     * @param tech_url to load data from
+     * @param general_url to load data from
      */
-    public NewsLoader(@NonNull Context context,String politics_url,String sports_url,String general_url,String tech_url) {
+    public NewsLoader(@NonNull Context context,String general_url) {
         super(context);
-        TECH_URL=tech_url;
         GENERAL_URL=general_url;
-        SPORTS_URL=sports_url;
-        POLITICS_URL=politics_url;
+        Log.e("NewsLoader constructor", "is ended", null);
     }
 
     @Override
     protected void onStartLoading() {
+        Log.e("onStartLoad", ": Force load", null);
         forceLoad();
     }
 
@@ -45,12 +45,12 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
     @Nullable
     @Override
     public List<News> loadInBackground() {
-        if (TECH_URL== null) {
+        if (GENERAL_URL== null) {
             return null;
         }
-
+        Log.e("NewsLoader", "NewsLoader started: Load in background", null);
         // Perform the network request, parse the response, and extract a list of earthquakes.
-        List<News> news = QueryUtils.fetchNewsData(TECH_URL);
+        List<News> news = QueryUtils.fetchNewsData(GENERAL_URL);
         return news;
     }
 }

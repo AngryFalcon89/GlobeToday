@@ -39,6 +39,7 @@ public class QueryUtils {
         //Perform HTTP request to the URL and receive a JSON response back
         String jsonResponse = null;
         try {
+            Log.e(LOG_TAG, "HTTP request: Give it a try bro!!!",null);
             jsonResponse =makeHttpRequest(url);
         }catch(IOException e){
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
@@ -57,6 +58,7 @@ public class QueryUtils {
     private static List<News> extractFeatureFromJson(String jsonResponse) {
         //If JSON string is empty or null,then return early
         if(TextUtils.isEmpty(jsonResponse)){
+            Log.e(LOG_TAG, "OH NO: JSON null !!!",null);
             return null;
         }
         //Create an empty ArrayList that we can start adding News to
@@ -66,7 +68,7 @@ public class QueryUtils {
         // is formatted, a JSONException exception object will be thrown.
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
-
+            Log.e(LOG_TAG, "Extraction from JSON is started.",null);
             // Create a JSONObject from the JSON response string
             JSONObject baseJsonResponse = new JSONObject(jsonResponse);
 
@@ -97,13 +99,14 @@ public class QueryUtils {
 
                 // Extract the value for the key called urlToImage"
                 String urlToImage = currentNews.getString("urlToImage");
-
+                Log.e("QueryUtils", "JSON parsed successfully", null);
                 // Create a new {@link Earthquake} object with the title , author , url , description ,time, urlToImage,
                 // and url from the JSON response.
                 News current_news = new News(title , author , url , description ,time, R.drawable.ic_launcher_foreground);
-
+                Log.e("QueryUtils", "arrY objet created successfully", null);
                 // Add the new {@link Earthquake} to the list of earthquakes.
                 news.add(current_news);
+                Log.e("QueryUtils", "Query added successfully", null);
             }
 
         } catch (JSONException e) {
@@ -146,7 +149,7 @@ public class QueryUtils {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.: line 151", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -187,6 +190,7 @@ public class QueryUtils {
         URL url = null;
         try {
             url = new URL(requestUrl);
+            Log.e(LOG_TAG, "URL build successfully ", null);
         } catch (MalformedURLException e) {
             Log.e(LOG_TAG, "Problem building the URL ", e);
         }
