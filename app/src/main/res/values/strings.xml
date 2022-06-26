@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Globe Today</string>
+    <string name="subheading_hint">Mara Kofoed, 45, was diagnosed with ovarian cancer in December 2021 after months trying to figure out vague and seemingly unrelated symptoms. She found doctors dismissed them at every turn and didn’t connect them to a tumor. It took a visit to an emergency room to finally get answers. Kofoed, who lives in Hudson Valley, New York, shared her story with TODAY.
+
+It was the biggest shock of my life to find out that I had ovarian cancer. I would have suspected maybe breast cancer because my grandmother had it, but ovarian cancer was very, very off the radar.
+
+Women need to be trained on this more. We know about breast cancer</string>
+    <string name="category_sports">Sports</string>
+    <string name="category_politics">Politics</string>
+    <string name="category_tech">Tech</string>
+    <string name="category_general">General</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
