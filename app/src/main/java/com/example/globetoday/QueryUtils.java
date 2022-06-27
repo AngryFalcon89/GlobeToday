@@ -1,5 +1,7 @@
 package com.example.globetoday;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -7,7 +9,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,6 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 
 public class QueryUtils {
@@ -100,16 +106,24 @@ public class QueryUtils {
                 // Extract the value for the key called urlToImage"
                 String urlToImage = currentNews.getString("urlToImage");
 
+                URL ImageURL = new URL(urlToImage);
+                Bitmap Image =null;
+                try {
+                    Image  = BitmapFactory.decodeStream(ImageURL.openConnection().getInputStream());
+                }catch (Exception e) {
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
+                }
                 // Create a new {@link Earthquake} object with the title , author , url , description ,time, urlToImage,
                 // and url from the JSON response.
-                News current_news = new News(title , author , url , description ,time, R.drawable.ic_launcher_foreground);
+                News current_news = new News(title , author , url , description ,time, Image);
 
                 // Add the new {@link Earthquake} to the list of earthquakes.
                 news.add(current_news);
 
             }
 
-        } catch (JSONException e) {
+        } catch (JSONException | IOException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.

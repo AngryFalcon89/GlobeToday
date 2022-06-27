@@ -1,5 +1,8 @@
 package com.example.globetoday;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapRegionDecoder;
+
 public class News {
     /** String resource ID for the Heading of news */
     private String nHeading;
@@ -17,7 +20,7 @@ public class News {
     private String nDate;
 
     /**Image Resource ID for News*/
-    private int nImageResourceId;
+    private Bitmap nImageResourceId;
     /**
      * Create a new Word object.
      *
@@ -26,14 +29,14 @@ public class News {
      * @param url is the news link that will direct us to news webSource
      * @param Article is the detailed description of news Article
      * @param Date is the date of publishing of news article
-     * @param ImageResourceId is the link to Image attached to the Article
+     * @param ImageBitmap is the link to Image attached to the Article
      */
-    public News(String Heading , String Author , String url , String Article ,String Date, int ImageResourceId) {
+    public News(String Heading , String Author , String url , String Article ,String Date, Bitmap ImageBitmap) {
         nHeading = Heading;
         nAuthorName = Author;
         nUrl = url;
         nArticle = Article;
-        nImageResourceId = ImageResourceId;
+        nImageResourceId = ImageBitmap;
 //        StringBuilder str = new StringBuilder(Date);
 //        nDate = str.substring(0,str.indexOf("T"));
         nDate=Date;
@@ -62,10 +65,10 @@ public class News {
     /**
      * @return Image Resource ID
      */
-    public int getImageResourceId(){return nImageResourceId;}
+    public Bitmap getImageResourceId(){return nImageResourceId;}
 
     public Boolean hasImage(){
-        if(nImageResourceId!=0)
+        if(nImageResourceId!=null)
             return true ;
         return false;
     }

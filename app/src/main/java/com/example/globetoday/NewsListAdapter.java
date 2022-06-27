@@ -60,7 +60,7 @@ public class NewsListAdapter extends ArrayAdapter<News> {
         // Check if an image is provided for this word or not
         if (currentWord.hasImage()) {
             // If an image is available, display the provided image based on the resource ID
-            imageView.setImageResource(currentWord.getImageResourceId());
+            imageView.setImageBitmap(currentWord.getImageResourceId());
             // Make sure the view is visible
             imageView.setVisibility(View.VISIBLE);
         } else {
