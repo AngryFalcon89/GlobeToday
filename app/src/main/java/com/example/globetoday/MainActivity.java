@@ -18,9 +18,6 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
-    public static final String TECH_URL="https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=6908bb4b71ae46fc926253f68c890aec";
-    public static final String SPORTS_URL="https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=6908bb4b71ae46fc926253f68c890aec";
-    public static final String POLITICS_URL="https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=6908bb4b71ae46fc926253f68c890aec";
 
     private NewsListAdapter mAdapter;
     /**
@@ -47,6 +44,8 @@ public class MainActivity extends AppCompatActivity  {
         ViewPager viewPager = findViewById(R.id.viewpager);
         // Create an adapter that knows which fragment should be shown on each page
         CategoryPagerAdapter adapter = new CategoryPagerAdapter(this, getSupportFragmentManager());
+
+        viewPager.setOffscreenPageLimit(1);
 
         // Set the adapter onto the view pager
         viewPager.setAdapter(adapter);

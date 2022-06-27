@@ -99,14 +99,14 @@ public class QueryUtils {
 
                 // Extract the value for the key called urlToImage"
                 String urlToImage = currentNews.getString("urlToImage");
-                Log.e("QueryUtils", "JSON parsed successfully", null);
+
                 // Create a new {@link Earthquake} object with the title , author , url , description ,time, urlToImage,
                 // and url from the JSON response.
                 News current_news = new News(title , author , url , description ,time, R.drawable.ic_launcher_foreground);
-                Log.e("QueryUtils", "arrY objet created successfully", null);
+
                 // Add the new {@link Earthquake} to the list of earthquakes.
                 news.add(current_news);
-                Log.e("QueryUtils", "Query added successfully", null);
+
             }
 
         } catch (JSONException e) {
@@ -115,7 +115,7 @@ public class QueryUtils {
             // with the message from the exception.
             Log.e("QueryUtils", "Problem parsing the News JSON results", e);
         }
-
+        Log.e("QueryUtils", "Query added successfully", null);
         // Return the list of earthquakes
         return news;
     }

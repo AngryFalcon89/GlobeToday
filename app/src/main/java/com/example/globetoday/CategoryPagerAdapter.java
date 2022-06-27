@@ -6,9 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
-public class CategoryPagerAdapter extends FragmentPagerAdapter {
+public class CategoryPagerAdapter extends FragmentStatePagerAdapter {
     /** Context of the app */
     private Context mContext;
 
@@ -29,17 +29,14 @@ public class CategoryPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        switch(position) {
-            case 0:
-                return new GeneralFragment();
-            case 1:
-                return new PoliticsFragment();
-            case 2:
-                return new SportsFragment();
-            case 3:
-                return new TechFragment();
-            default:
-                return null;
+        if (position == 0) {
+            return new GeneralFragment();
+        } else if (position == 1) {
+            return new EntertainmentFragment();
+        } else if (position == 2) {
+            return new SportsFragment();
+        } else {
+            return new TechFragment();
         }
     }
 
